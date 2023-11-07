@@ -1,14 +1,15 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyDP7ItEw0cdhFv0fCcXnlGkZNqzZvZwU5Y",
-    authDomain: "project-ecohog.firebaseapp.com",
-    projectId: "project-ecohog",
-    storageBucket: "project-ecohog.appspot.com",
-    messagingSenderId: "372927825980",
-    appId: "1:372927825980:web:bf2f9b5f591cf075cc5b39",
-    measurementId: "G-NM77TCP9V9"
-  },
+    apiKey: "AIzaSyBbo1PxPcJ_TVqmSHUFvZNfCJfxIK6izdI",
+    authDomain: "medidor-de-consumo-80df0.firebaseapp.com",
+    databaseURL: "https://medidor-de-consumo-80df0-default-rtdb.firebaseio.com",
+    projectId: "medidor-de-consumo-80df0",
+    storageBucket: "medidor-de-consumo-80df0.appspot.com",
+    messagingSenderId: "901127736588",
+    appId: "1:901127736588:web:5387dcd2dd860f12398d29",
+    measurementId: "G-B0JQ7DYBPE"
+  }
 };
 
 
