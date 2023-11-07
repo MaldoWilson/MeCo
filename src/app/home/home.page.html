@@ -12,8 +12,11 @@
 <ion-content [fullscreen]="true">
 
   <div id="container">
-    <div>
-      <p>Bienvenido Medidor de Corriente</p>
+    <div *ngFor="let data of Devices">
+      <p>{{data.name}}</p>
+      <p>{{data.id}}</p>
+
+      <button (click)="connect(data.address)" ></button>
     </div>
   </div>
 </ion-content>

@@ -1,5 +1,7 @@
 {
   "name": "EcoHog",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
