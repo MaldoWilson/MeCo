@@ -3,6 +3,9 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
 import { map } from 'rxjs/operators';
 import { canActivate } from '@angular/fire/compat/auth-guard';
+import { redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
 const uidAdmin = 'XB8wct2kV6Zf9MZde5CxrDgqmnQ2';
 const onlyAdmin = () => map((user:any) => !!user &&  user.uid === uidAdmin);
@@ -43,12 +46,12 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () => import('./settings/settings/settings.module').then( m => m.SettingsPageModule),
-    canActivate: [AngularFireAuthGuard]
+    ...canActivate(redirectUnauthorizedToLogin)
   },
   {
     path: 'licenses',
     loadChildren: () => import('./settings/licenses/licenses.module').then( m => m.LicensesPageModule),
-    canActivate: [AngularFireAuthGuard]
+    ...canActivate(redirectUnauthorizedToLogin)
   },
   {
     path: 'update/:id',
@@ -73,8 +76,34 @@ const routes: Routes = [
   {
     path: 'data-controls',
     loadChildren: () => import('./settings/data-controls/data-controls.module').then( m => m.DataControlsPageModule),
-    canActivate: [AngularFireAuthGuard]
+    ...canActivate(redirectUnauthorizedToLogin)
   },
+  {
+    path: 'gasto-electrico',
+    loadChildren: () => import('./vistas/gasto-electrico/gasto-electrico.module').then( m => m.GastoElectricoPageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+  {
+    path: 'consumo-diario',
+    loadChildren: () => import('./vistas/consumo-diario/consumo-diario.module').then( m => m.ConsumoDiarioPageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+  {
+    path: 'consumo-semanal',
+    loadChildren: () => import('./vistas/consumo-semanal/consumo-semanal.module').then( m => m.ConsumoSemanalPageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+  {
+    path: 'consumo-mensual',
+    loadChildren: () => import('./vistas/consumo-mensual/consumo-mensual.module').then( m => m.ConsumoMensualPageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+  {
+    path: 'estadistica-consumo',
+    loadChildren: () => import('./vistas/estadistica-consumo/estadistica-consumo.module').then( m => m.EstadisticaConsumoPageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+
 ];
 
 @NgModule({
