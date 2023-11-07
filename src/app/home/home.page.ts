@@ -43,7 +43,7 @@ export class HomePage {
 
   connect(address){
   this.bluetoothSerial.connect(address).subscribe(success=>{
-
+    this.deviceConnected()
 }
 ),error=>{
   console.log("error")
@@ -52,8 +52,27 @@ export class HomePage {
 
   deviceConnected(){
     this.bluetoothSerial.subscribe('/n').subscribe(success=>{
-      
-    })
+      this.hundler(success)     
+    }
+    )
+  }
+
+  hundler(value){
+    console.log(value)
+  }
+
+  sebData(){
+    this.bluetoothSerial.write("7").then(responce=>{
+      console.log("ok")
+    },error=>{
+      console.log("un problema")
+    }
+    )
+  }
+
+  Disconnected(){
+    this.bluetoothSerial.disconnect()
+    console.log("Dispositivo Desconectado")
   }
 
   async isEnable(msg){
