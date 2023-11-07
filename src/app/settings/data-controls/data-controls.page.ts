@@ -5,6 +5,7 @@ import { InteractionService } from 'src/app/services/interaction.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/models';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-data-controls',
@@ -15,12 +16,26 @@ export class DataControlsPage implements OnInit {
   userId: string;
   email: string;
 
+  public alertButtons = [
+    {
+      text: 'No',
+      cssClass: 'alert-button-cancel',
+      role: 'cancel',
+    },
+    {
+      text: 'Yes',
+      cssClass: 'alert-button-confirm',
+      role: 'confirm'
+    },
+  ];
+
   constructor(
     private router: Router,
     private interaction: InteractionService,
     private userService: UserServiceService,
     private authService: AuthService,
-    private firestore: FirestoreService
+    private firestore: FirestoreService,
+    private alertController: AlertController
   ) {
     this.authService.stateUser().subscribe(res => {
       if (res){
@@ -60,5 +75,23 @@ export class DataControlsPage implements OnInit {
     });
   }
 
-  
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: '¿Estas seguro de que desea eliminar?',
+      buttons: this.alertButtons,
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log('Resultado del alert:', role);
+
+    if (role === 'confirm') {
+      console.log('Usuario seleccionó "Yes"');
+      this.deleteUser();
+    } else {
+      console.log('Usuario seleccionó "No" o cerró el alert');
+    }
+  }
 }

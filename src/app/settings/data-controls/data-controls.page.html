@@ -54,7 +54,7 @@
         <h2>Exportar información</h2>
       </ion-label>
     </ion-item>
-    <ion-item (click)="deleteUser()" routerDirection="root" [routerLink]="['/settings']" lines="none" detail="false" routerLinkActive="selected">
+    <ion-item  (click)="presentAlert()" routerDirection="root" lines="none" detail="false" routerLinkActive="selected">
       <ion-avatar aria-hidden="true" slot="start">
         <ion-icon name="trash-outline" class="danger"></ion-icon>
       </ion-avatar>

@@ -21,14 +21,14 @@ export class UserServiceService {
   // Elimina usuario de realtime database y authentification
   async deleteUser(userId: string): Promise<void> {
     try {
-      // Eliminar el usuario de la base de datos en tiempo real
-      const clientRef: AngularFireObject<any> = this.firebaseDB.object(`/users/${userId}`);
-      await clientRef.remove();
       // Eliminar el usuario de Authentication
       const user = await this.ngFireAuth.authState.pipe(take(1)).toPromise();
       if (user) {
         await user.delete();
         console.error('Eliminado correctamente');
+        // Eliminar el usuario de la base de datos en tiempo real
+        const clientRef: AngularFireObject<any> = this.firebaseDB.object(`/users/${userId}`);
+        await clientRef.remove();
       }
     } catch (error) {
       console.error('Error al eliminar el cliente:', error);
