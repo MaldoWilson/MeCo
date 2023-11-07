@@ -1,0 +1,67 @@
+ion-button{
+  height: 50px;
+  width: 43%;
+}
+
+
+/* En tu archivo .scss o .css */
+.modern-card {
+  border-radius: 10px; /* Esquinas redondeadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  background-color: #ffffff; /* Fondo blanco */
+  margin: 10px;
+}
+
+.modern-title {
+  font-size: 1.2rem; /* Tamaño del título */
+  font-weight: 600; /* Peso de la fuente */
+  color: #ffffff;
+}
+
+.modern-subtitle {
+  font-size: 1rem; /* Tamaño del subtítulo */
+  color: #c8c8c8; /* Color del subtítulo */
+}
+
+.modern-text {
+  font-size: 1rem; /* Tamaño del texto */
+}
+
+.modern-button {
+  border-radius: 5px; /* Esquinas redondeadas */
+  margin-top: 10px;
+  font-weight: 600; /* Peso de la fuente */
+}
+
+ion-header {
+  --ion-border-color: transparent;
+}
+
+ion-content {
+--ion-background-color: #1c1b20;
+}
+
+ion-toolbar {
+--background: #282931;
+color: #e8e7eb;
+}
+
+h2 {
+  color: #ffffff
+}
+
+p {
+  color: #ffffff
+}
+
+ion-card {
+  --border-color: #ff0000; // Reemplaza con tu código de color HEX
+}
+
+ion-list {
+  padding-right: 16px; // O el valor que prefieras
+}
+
+ion-card-title {
+  color: #ffffff;
+}

@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Eliminar</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button [routerLink]="['/detail',cliente.id]"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle class="modern-subtitle">ID # {{cliente.id}}</ion-card-subtitle>
+      <ion-card-title class="modern-title">¿Realmente desea eliminar a {{cliente.username}}?</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="center-container">
+      <ion-button color="danger" slot="end" (click)="deleteUser()" class="center-button">Eliminar</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

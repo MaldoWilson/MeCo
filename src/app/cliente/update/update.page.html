@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Modificar</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button [routerLink]="['/detail',usuario.uid]"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Modificar</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle class="modern-subtitle">ID # {{usuario.uid}}</ion-card-subtitle>
+      <ion-card-title class="modern-title ">{{usuario.email}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="ion-padding">
+
+    <ion-item>
+      <ion-input placeholder="Correo electronico" class="input"  class="input" id="username" [(ngModel)]="usuario.username"></ion-input>
+      <ion-icon name="person-circle-outline"></ion-icon>
+    </ion-item>
+
+    <ion-list>
+      <ion-item>
+        <ion-select [(ngModel)]="usuario.perfil" interface="popover" placeholder="Selecciona el perfil" style="color: black;">
+          <ion-select-option value="client" color="dark">Cliente</ion-select-option>
+          <ion-select-option value="admin" >Admin</ion-select-option>
+        </ion-select>
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-item>
+    </ion-list>
+    
+    <div class="center-container">
+      <ion-button class="center-button" (click)="updateUser()">Actualizar</ion-button>
+    </div>
+  </div>
+
+  
+
+
+
+</ion-content>

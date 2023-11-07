@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Listar</ion-title>
+
+    
+    <!--<ion-buttons slot="end"> -->
+      <!--<ion-button [routerLink]="['/add']" class="buttonText"> Agregar</ion-button>-->
+    <!--</ion-buttons>-->
+
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content>
+    <ion-list>
+        <ion-item *ngFor="let user of users" [routerLink]="['/detail',user.uid]">
+          <ion-label>
+            <h2>{{ user.username }}</h2>
+            <p>{{ user.email }}</p>
+            <p><strong>{{ user.password }}</strong></p>
+            <p><strong>{{ user.perfil }}</strong></p>
+            <p *ngIf="user.perfil === 'admin'"><strong>Admin</strong></p>
+            <p *ngIf="user.perfil === 'client'"><strong>Cliente</strong></p>
+            <p><strong>{{ user.uid }}</strong></p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+  </ion-content>

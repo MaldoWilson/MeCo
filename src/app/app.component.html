@@ -1,0 +1,43 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <div class="menu-item">
+            <img src="assets/img/profile.jpeg" alt="Perfil" class="menu-image">
+            <div class="menu-text">
+              <ion-list-header class="texto">{{ username }}</ion-list-header>
+              <ion-note >{{ email }}</ion-note>
+            </div>
+          </div>
+
+
+          <ion-menu-toggle auto-hide="false" *ngIf="rol === 'admin'">
+            <ion-item routerDirection="root" [routerLink]="['/list']" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon name="list-outline"  slot="start" aria-hidden="true" ></ion-icon>
+              <ion-label class="texto">Listar</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <ion-list id="labels-list">
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" [routerLink]="['/settings']" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon aria-hidden="true" slot="start" name="settings-outline"></ion-icon>
+              <ion-label class="texto">Configuración</ion-label>
+            </ion-item>
+            <ion-item routerDirection="root" [routerLink]="['/list']" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon aria-hidden="true" slot="start" name="help-circle-outline"></ion-icon>
+              <ion-label class="texto">Ayuda</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+
+      </ion-content>
+    </ion-menu>
+
+
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
