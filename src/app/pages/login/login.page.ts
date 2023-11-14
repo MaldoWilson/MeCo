@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { first } from 'rxjs/operators';
+import { AuthFacadeService } from 'src/app/auth-facade.service'
 
 @Component({
   selector: 'app-login',
@@ -13,49 +14,39 @@ import { first } from 'rxjs/operators';
 export class LoginPage implements OnInit {
   loginForm : FormGroup
 
-  constructor(private formBuilder:FormBuilder, private authService:AuthService,
-    private router : Router, private interaction: InteractionService) { }
+  constructor(
+    private formBuilder:FormBuilder,
+    private authService:AuthService,
+    private router : Router,
+     private interaction: InteractionService,
+     private authFacadeService: AuthFacadeService,
+     ) { }
 
-  ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      email: ['',[
-        Validators.required,
-        Validators.email,
-        Validators.pattern("[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$")]],
-      password: ['', [
-        Validators.required,
-        Validators.minLength(8)]]
-    })
-  }
+     ngOnInit() {
+      this.loginForm = this.formBuilder.group({
+        email: ['', [Validators.required, Validators.email, Validators.pattern("[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$")]],
+        password: ['', [Validators.required, Validators.minLength(8)]],
+      });
+    }
 
-  get errorControl(){
-    return this.loginForm?.controls;
-  }
+    get errorControl() {
+      return this.loginForm?.controls;
+    }
+    async login() {
+      if (this.loginForm?.valid) {
+        const success = await this.authFacadeService.login(
+          this.loginForm.value.email,
+          this.loginForm.value.password
+        );
 
-  async login(){
-    
-    if(this.loginForm?.valid){
-      this.interaction.presentLoading('Iniciando sesión')
-      const user = await this.authService.loginUser(this.loginForm.value.email,this.loginForm.value.password
-        ).catch((error)=>{
-        console.log('error');
-        this.interaction.closeLoading();
-      })
-
-      if(user){
-        console.log('Se inicio sesion');
-        this.interaction.closeLoading();
-        this.interaction.presentToast('Sesión iniciada');
-        this.router.navigate(['/home'])
-      }else{
-        console.log('provide correct values');
-        this.interaction.presentToast('No se encontro su cuenta');
+        if (success) {
+          this.router.navigate(['/home']);
+        }
+      } else {
+        console.log('Proporcione valores correctos');
+        // Resto del código de manejo de errores
       }
-  }else{
-    console.log('provide correct values');
-    this.interaction.presentToast('Correo o contraseña no valida');
-  }
- }
+    }
 
  ionViewDidEnter() {
   this.checkUserStatus();
