@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { first } from 'rxjs/operators';
+import { AuthFacadeService } from 'src/app/services/auth-facade.service';
 
 @Component({
   selector: 'app-signup',
@@ -21,39 +22,24 @@ export class SignupPage  {
     perfil: 'client',
   }
 
-  
 
-    constructor(public authService:AuthService, public router : Router, 
+
+    constructor(public authService:AuthService, public router : Router, private authFacadeService: AuthFacadeService,
       private firestore: FirestoreService, private interaction: InteractionService
       ) {}
 
-    async signUp(){
-      this.interaction.presentLoading('Registrando..')
-      const res = await this.authService.registerUser(this.datos).catch(error => {
-        this.interaction.closeLoading();
-        this.interaction.presentToast('Cuenta ya creada o datos mal escrito');
-        console.log('error');
-      }); 
-      if (res){
-        console.log('Exito al crear al usuario');
-        const path = 'users';
-        const id = res.user.uid;
-        this.datos.uid = id;
-        this.datos.password = null;
-        await this.firestore.createDoc(this.datos, path,id).catch(error => {
-          console.log('error');
-        })
-        this.interaction.closeLoading();
-        this.interaction.presentToast('Registrado con éxito');
-        this.router.navigate(['/home']);
+      async signUp() {
+        const success = await this.authFacadeService.signUp(this.datos);
 
-    }
-  }
+        if (success) {
+          this.router.navigate(['/home']);
+        }
+      }
 
   ionViewDidEnter() {
     this.checkUserStatus();
   }
-  
+
   async checkUserStatus() {
     const user = await this.authService.stateUser().pipe(first()).toPromise();
     if (user) {
