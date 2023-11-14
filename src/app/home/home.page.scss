@@ -27,12 +27,8 @@
 }
 
 ion-content {
-  --background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), no-repeat center center fixed;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  --ion-background-color: #1c1b20;
+  }
 
 ion-header {
   --ion-background-color: transparent; // Hace el fondo transparente
