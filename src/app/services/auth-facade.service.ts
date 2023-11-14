@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { InteractionService } from './services/interaction.service';
+import { InteractionService } from './interaction.service';
 
 
 @Injectable({

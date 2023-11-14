@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { first } from 'rxjs/operators';
-import { AuthFacadeService } from 'src/app/auth-facade.service'
+import { AuthFacadeService } from 'src/app/services/auth-facade.service'
 
 @Component({
   selector: 'app-login',
@@ -44,7 +44,7 @@ export class LoginPage implements OnInit {
         }
       } else {
         console.log('Proporcione valores correctos');
-        // Resto del código de manejo de errores
+
       }
     }
 
