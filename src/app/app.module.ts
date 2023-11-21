@@ -12,18 +12,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
 
 
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule, 
-    IonicModule.forRoot(), 
+    BrowserModule,
+    IonicModule.forRoot(),
     IonicModule,
     AppRoutingModule,
-    AngularFireModule, 
+    AngularFireModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)],
+
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
