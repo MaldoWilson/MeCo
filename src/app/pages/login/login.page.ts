@@ -32,21 +32,27 @@ export class LoginPage implements OnInit {
     get errorControl() {
       return this.loginForm?.controls;
     }
-    async login() {
-      if (this.loginForm?.valid) {
-        const success = await this.authFacadeService.login(
-          this.loginForm.value.email,
-          this.loginForm.value.password
-        );
+// Método asíncrono para manejar el proceso de inicio de sesión desde el formulario
+async login() {
+  // Verificar si el formulario de inicio de sesión es válido
+  if (this.loginForm?.valid) {
+    // Llamar al servicio de fachada de autenticación para realizar el inicio de sesión
+    const success = await this.authFacadeService.login(
+      this.loginForm.value.email,
+      this.loginForm.value.password
+    );
 
-        if (success) {
-          this.router.navigate(['/home']);
-        }
-      } else {
-        console.log('Proporcione valores correctos');
-
-      }
+    // Verificar si el inicio de sesión fue exitoso
+    if (success) {
+      // Redirigir a la página de inicio después del inicio de sesión exitoso
+      this.router.navigate(['/home']);
     }
+  } else {
+    // Imprimir un mensaje en la consola si el formulario no es válido
+    console.log('Proporcione valores correctos');
+  }
+}
+
 
  ionViewDidEnter() {
   this.checkUserStatus();
