@@ -20,10 +20,11 @@ export class ResetPasswordPage implements OnInit {
   async resetPassword(){
     this.authService.resetPassword(this.email).then(()=>{
       console.log('reset link sent')
+      this.interaction.showSuccessToast('Correo enviado correctamente');
       this.router.navigate(['/login'])
     }).catch((error)=>{
       console.log('error');
-      this.interaction.presentToast('Escriba un correo valido');
+      this.interaction.showErrorToast('Escriba un correo valido');
 
     })
   }

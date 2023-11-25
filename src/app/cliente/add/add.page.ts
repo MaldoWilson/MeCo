@@ -29,7 +29,7 @@ export class AddPage{
       this.interaction.presentLoading('Registrando..')
       const res = await this.authService.registerUser(this.datos).catch(error => {
         this.interaction.closeLoading();
-        this.interaction.presentToast('Cuenta ya creada o datos mal escrito');
+        this.interaction.showErrorToast('Cuenta ya creada o datos mal escrito');
         console.log('error');
       }); 
       if (res){
@@ -42,7 +42,7 @@ export class AddPage{
           console.log('error');
         })
         this.interaction.closeLoading();
-        this.interaction.presentToast('Registrado con éxito');
+        this.interaction.showSuccessToast('Registrado con éxito');
         this.router.navigate(['/home']);
 
     }

@@ -31,11 +31,11 @@ export class UpdatePage implements OnInit {
       console.log('Usuario actualizado correctamente');
       this.interaction.closeLoading();
       this.router.navigate(['/detail',this.userId])
-      this.interaction.presentToast('Modificado con éxito');
+      this.interaction.showSuccessToast('Modificado con éxito');
     }).catch(error => {
       console.error('Error al actualizar el usuario:', error);
       this.interaction.closeLoading();
-      this.interaction.presentToast('No se ha podido modificar el usuario');
+      this.interaction.showErrorToast('No se ha podido modificar el usuario');
     });
   }
 }

@@ -52,12 +52,12 @@ export class DeletePage implements OnInit {
     this.userService.eliminarClientess(this.clienteId).then(() => {
     // Redirige a la página de listar después de eliminar el cliente
     this.interaction.closeLoading();
-    this.interaction.presentToast('Eliminado con éxito');
+    this.interaction.showSuccessToast('Eliminado con éxito');
     this.router.navigate(['/list']);
     }).catch(error => {
       console.error('Error al eliminar el cliente:', error);
       this.interaction.closeLoading();
-      this.interaction.presentToast('No se ha podido eliminar');
+      this.interaction.showErrorToast('No se ha podido eliminar');
     });
   }
 }

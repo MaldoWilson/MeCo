@@ -9,6 +9,8 @@ export class ToastService {
 
   constructor(private toastCtrl: ToastController) { }
 
+
+  // Decorator
   async showBaseToast(mensaje: string, position: 'top' | 'middle' | 'bottom', color: string) {
     const toast = await this.toastCtrl.create({
       message: mensaje,  
@@ -20,16 +22,16 @@ export class ToastService {
     toast.present();
   }
 
-
+  // Decorator de exito
   async showSuccessToast(mensaje: string) {
-    this.showBaseToast(mensaje, 'middle', 'success');
+    this.showBaseToast(mensaje, 'bottom', 'success');
 
   }
-
+  // Decorator de fallo
   async showErrorToast(mensaje: string) {
     this.showBaseToast(mensaje, 'bottom', 'danger');
   }
-
+  // Decorator normal
   async showNormalToast(mensaje: string) {
     this.showBaseToast(mensaje, 'bottom', 'medium');
   }
