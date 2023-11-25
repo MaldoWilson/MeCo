@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 
 
 // decorator service
-import { ToastService } from 'src/app/toast.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-home',
