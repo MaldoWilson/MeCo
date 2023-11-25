@@ -10,6 +10,8 @@ import { UserServiceService } from './cliente/userService/user-service.service';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
+
+
 export class AppComponent {
   login: boolean = false;
   rol: 'client' | 'admin' = null;
@@ -32,6 +34,13 @@ export class AppComponent {
             }
           });
     }
+    
+
+  calculateConsumption(): number {
+        // Implementa el cálculo de consumo específico de este componente
+        return 0;
+      }
+    
 
 
   //  Obtiene perfil de usuario (cliente o admin)
@@ -50,6 +59,5 @@ export class AppComponent {
       }
     })
   }
-
 
 }
