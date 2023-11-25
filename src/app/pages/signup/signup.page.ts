@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/models';
 import { AuthService } from 'src/app/services/auth.service';
-import { FirestoreService } from 'src/app/services/firestore.service';
-import { InteractionService } from 'src/app/services/interaction.service';
 import { first } from 'rxjs/operators';
 import { AuthFacadeService } from 'src/app/services/auth-facade.service';
 
@@ -24,8 +22,10 @@ export class SignupPage  {
 
 
 
-    constructor(public authService:AuthService, public router : Router, private authFacadeService: AuthFacadeService,
-      private firestore: FirestoreService, private interaction: InteractionService
+    constructor(
+      private authService:AuthService, 
+      private router : Router, 
+      private authFacadeService: AuthFacadeService,
       ) {}
 
       async signUp() {

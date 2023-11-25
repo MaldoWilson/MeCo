@@ -18,7 +18,7 @@ export class AuthFacadeService {
     try {
       // Mostrar un indicador de carga durante el inicio de sesión
       this.interactionService.presentLoading('Iniciando sesión');
-      
+
       // Llamar al servicio de autenticación para iniciar sesión
       const user = await this.authService.loginUser(email, password);
 
@@ -27,14 +27,14 @@ export class AuthFacadeService {
         this.interactionService.closeLoading();
         
         // Mostrar un mensaje de éxito al usuario
-        this.interactionService.presentToast('Sesión iniciada');
+        this.interactionService.showSuccessToast('Sesión iniciada');
         return true;
       } else {
         // Cerrar el indicador de carga si el inicio de sesión falla
         this.interactionService.closeLoading();
         
         // Mostrar un mensaje de error al usuario
-        this.interactionService.presentToast('No se encontró su cuenta');
+        this.interactionService.showErrorToast('Sesión iniciada');
         return false;
       }
     } catch (error) {
@@ -70,14 +70,14 @@ export class AuthFacadeService {
         this.interactionService.closeLoading();
         
         // Mostrar un mensaje de éxito al usuario
-        this.interactionService.presentToast('Registrado con éxito');
+        this.interactionService.showSuccessToast('Registrado con éxito');
         return true;
       } else {
         // Cerrar el indicador de carga si el registro falla
         this.interactionService.closeLoading();
         
         // Mostrar un mensaje de error al usuario
-        this.interactionService.presentToast('Cuenta ya creada o datos mal escritos');
+        this.interactionService.showErrorToast('Cuenta ya creada o datos mal escritos');
         console.log('Error durante el registro');
         return false;
       }

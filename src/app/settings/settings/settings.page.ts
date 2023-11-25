@@ -80,7 +80,7 @@ export class SettingsPage implements OnInit {
     async logout() {
       this.authService.logoutUser().then(()=>{
         console.log('Sesión cerrada')
-        this.interaction.presentToast('Sesión finalizada')
+        this.interaction.showNormalToast('Sesión finalizada')
         this.router.navigate(['/landing'])
       })
     }

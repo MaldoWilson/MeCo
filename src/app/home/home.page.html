@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Home
+      Menu Principal
     </ion-title>
 
   </ion-toolbar>
@@ -20,5 +20,38 @@
       <button (click)="connect(data.address)" ></button>
     </div>
   </div>
-  <ion-button (click)="activarBluetooth()">Default</ion-button>
+
+    <div class="centrado">
+      <ion-button (click)="activarBluetooth()" >Activar Bluetooth</ion-button>
+    </div>
+
+ 
+
+  <ion-grid>
+    <!-- Primera fila -->
+    <ion-row>
+      <ion-col size="6">
+        <ion-button [routerLink]="['/consumo-diario']">
+          <ion-img src="assets/img/consumod.png"></ion-img>
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button  [routerLink]="['/consumo-semanal']">
+          <ion-img src="assets/img/consumos.png"></ion-img>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <!-- Segunda fila -->
+    <ion-row>
+      <ion-col size="6">
+        <ion-button  [routerLink]="['/consumo-mensual']">
+          <ion-img src="assets/img/consumom.png"></ion-img>
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <!-- Agrega la cuarta imagen aquí -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

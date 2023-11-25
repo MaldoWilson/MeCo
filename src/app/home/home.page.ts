@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, NavController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { BluetoothSerial } from '@awesome-cordova-plugins/bluetooth-serial/ngx';
@@ -14,9 +14,14 @@ import { AlertController } from '@ionic/angular';
 export class HomePage {
 
   Devices
-  constructor(public formBuilder:FormBuilder, public loadingCtrl: LoadingController
-  ,public authService:AuthService,private bluetoothSerial:BluetoothSerial,private alertController:AlertController,
-  public router : Router) {}
+  constructor(
+  private formBuilder:FormBuilder, 
+  private loadingCtrl: LoadingController,
+  private authService:AuthService,
+  private bluetoothSerial:BluetoothSerial,
+  private alertController:AlertController,
+  private navCtrl: NavController,
+  private router : Router) {}
 
 
 
@@ -88,5 +93,6 @@ export class HomePage {
     }
     )
   }
+
 
 }

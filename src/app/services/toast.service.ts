@@ -1,36 +1,18 @@
+import { animate } from '@angular/animations';
 import { Injectable } from '@angular/core';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
 })
-export class InteractionService {
+export class ToastService {
 
-  loading: any
-
-  constructor(public toastController: ToastController, public loadingController: LoadingController) { }
-
-  // Loading con mensaje
-  async presentLoading(mensaje: string){
-    this.loading = await this.loadingController.create({
-      cssClass:'my custom class',
-      message: mensaje,
-    });
-    await this.loading.present();
-
-    setTimeout(() => {
-      this.loading.dismiss();
-    }, 5000);
-  }
-
-  async closeLoading(){
-    await this.loading.dismiss();
-  }
+  constructor(private toastCtrl: ToastController) { }
 
 
-  // Decorator Tost
+  // Decorator
   async showBaseToast(mensaje: string, position: 'top' | 'middle' | 'bottom', color: string) {
-    const toast = await this.toastController.create({
+    const toast = await this.toastCtrl.create({
       message: mensaje,  
       duration: 2000,
       color: color,
@@ -53,6 +35,5 @@ export class InteractionService {
   async showNormalToast(mensaje: string) {
     this.showBaseToast(mensaje, 'bottom', 'medium');
   }
-  
 
 }

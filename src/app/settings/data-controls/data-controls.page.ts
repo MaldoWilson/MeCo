@@ -66,16 +66,16 @@ export class DataControlsPage implements OnInit {
     this.userService.deleteUser(this.userId).then(() => {
       // Redirige a la página de listar después de eliminar el cliente
       this.interaction.closeLoading();
-      this.interaction.presentToast('Eliminado con éxito');
+      this.interaction.showSuccessToast('Cuenta eliminada con éxito');
       this.router.navigate(['/landing']);
     }).catch(error => {
       console.error('Error al eliminar el cliente:', error);
       this.interaction.closeLoading();
-      this.interaction.presentToast('No se ha podido eliminar');
+      this.interaction.showErrorToast('No se ha podido eliminar');
     });
   }
 
-
+  // Alerta de pregunta para eliminar usuario
   async presentAlert() {
     const alert = await this.alertController.create({
       header: '¿Estas seguro de que desea eliminar?',
