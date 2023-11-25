@@ -18,8 +18,8 @@ export class LoginPage implements OnInit {
     private formBuilder:FormBuilder,
     private authService:AuthService,
     private router : Router,
-     private interaction: InteractionService,
-     private authFacadeService: AuthFacadeService,
+    private interaction: InteractionService,
+    private authFacadeService: AuthFacadeService,
      ) { }
 
      ngOnInit() {
