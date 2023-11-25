@@ -9,13 +9,12 @@ export class ToastService {
 
   constructor(private toastCtrl: ToastController) { }
 
-  async showBaseToast(mensaje: string, color: string, position: 'top' | 'middle' | 'bottom', animate?: boolean) {
+  async showBaseToast(mensaje: string, position: 'top' | 'middle' | 'bottom', color: string) {
     const toast = await this.toastCtrl.create({
       message: mensaje,  
       duration: 2000,
       color: color,
       position: position,
-      animated: animate
     });
   
     toast.present();
@@ -23,12 +22,16 @@ export class ToastService {
 
 
   async showSuccessToast(mensaje: string) {
-    this.showBaseToast(mensaje, 'success', 'top',true);
+    this.showBaseToast(mensaje, 'middle', 'success');
 
   }
 
   async showErrorToast(mensaje: string) {
-    this.showBaseToast(mensaje, 'danger', 'bottom');
+    this.showBaseToast(mensaje, 'bottom', 'danger');
+  }
+
+  async showNormalToast(mensaje: string) {
+    this.showBaseToast(mensaje, 'bottom', 'medium');
   }
 
 }

@@ -3,7 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { InteractionService } from 'src/app/services/interaction.service';
+import { ToastService } from 'src/app/services/toast.service';
 import { first } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-login',
@@ -13,8 +15,12 @@ import { first } from 'rxjs/operators';
 export class LoginPage implements OnInit {
   loginForm : FormGroup
 
-  constructor(private formBuilder:FormBuilder, private authService:AuthService,
-    private router : Router, private interaction: InteractionService) { }
+  constructor(
+    private formBuilder:FormBuilder, 
+    private authService:AuthService,
+    private router : Router, 
+    private interaction: InteractionService,
+    private toast: ToastService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -43,17 +49,15 @@ export class LoginPage implements OnInit {
       })
 
       if(user){
-        console.log('Se inicio sesion');
         this.interaction.closeLoading();
-        this.interaction.presentToast('Sesión iniciada');
+        this.toast.showSuccessToast('Sesión iniciada');
         this.router.navigate(['/home'])
       }else{
-        console.log('provide correct values');
-        this.interaction.presentToast('No se encontro su cuenta');
+        this.toast.showErrorToast('No se encontro su cuenta');
       }
   }else{
     console.log('provide correct values');
-    this.interaction.presentToast('Correo o contraseña no valida');
+    this.toast.showErrorToast('Correo o contraseña no valida');
   }
  }
 
