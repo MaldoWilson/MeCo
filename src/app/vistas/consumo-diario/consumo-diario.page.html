@@ -20,8 +20,12 @@
 
 <h1>Consumo Diario</h1>
 
-<p>Consumo total diario: {{ totalConsumption }}</p>
+<p>Consumo total diario: {{ totalConsumption }} kWh </p>
     </div>
   </div>
+  <div class="centrado">
+    <ion-button (click)="resetTotalConsumption()" >Restablecer consumo</ion-button>
+  </div>
+
 </ion-content>
 

@@ -26,6 +26,8 @@ export class ConsumoDiarioPage implements OnInit {
     // Calcular el consumo total utilizando el Composite
     this.totalConsumption = mainComposite.calculateConsumption();
   }
-
+  resetTotalConsumption() {
+    this.totalConsumption = 0;
+  }
 }
 
