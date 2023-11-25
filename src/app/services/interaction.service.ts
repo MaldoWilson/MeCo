@@ -10,6 +10,7 @@ export class InteractionService {
 
   constructor(public toastController: ToastController, public loadingController: LoadingController) { }
 
+  // Loading con mensaje
   async presentLoading(mensaje: string){
     this.loading = await this.loadingController.create({
       cssClass:'my custom class',

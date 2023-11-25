@@ -75,7 +75,7 @@ export class DataControlsPage implements OnInit {
     });
   }
 
-
+  // Alerta de pregunta para eliminar usuario
   async presentAlert() {
     const alert = await this.alertController.create({
       header: '¿Estas seguro de que desea eliminar?',

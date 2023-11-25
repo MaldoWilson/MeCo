@@ -14,9 +14,14 @@ import { AlertController } from '@ionic/angular';
 export class HomePage {
 
   Devices
-  constructor(public formBuilder:FormBuilder, public loadingCtrl: LoadingController
-  ,public authService:AuthService,private bluetoothSerial:BluetoothSerial,private alertController:AlertController,private navCtrl: NavController,
-  public router : Router) {}
+  constructor(
+  private formBuilder:FormBuilder, 
+  private loadingCtrl: LoadingController,
+  private authService:AuthService,
+  private bluetoothSerial:BluetoothSerial,
+  private alertController:AlertController,
+  private navCtrl: NavController,
+  private router : Router) {}
 
 
 
