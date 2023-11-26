@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Composite } from 'src/app/vistas/composite.component';
 import { Leaf } from 'src/app/vistas/leaf.component';
+import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import 'chart.js';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-consumo-diario',
@@ -8,6 +11,7 @@ import { Leaf } from 'src/app/vistas/leaf.component';
   styleUrls: ['./consumo-diario.page.scss'],
 })
 export class ConsumoDiarioPage implements OnInit {
+
 
   totalConsumption: number;
 
@@ -29,5 +33,7 @@ export class ConsumoDiarioPage implements OnInit {
   resetTotalConsumption() {
     this.totalConsumption = 0;
   }
+
+ 
 }
 

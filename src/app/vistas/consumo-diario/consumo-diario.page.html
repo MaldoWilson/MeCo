@@ -13,6 +13,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-img src="assets\img\grafico.png"></ion-img>
 
   <div id="container">
     <div>
@@ -26,6 +27,6 @@
   <div class="centrado">
     <ion-button (click)="resetTotalConsumption()" >Restablecer consumo</ion-button>
   </div>
-
+  <canvas #myChart width="400" height="400"></canvas>
 </ion-content>
 
