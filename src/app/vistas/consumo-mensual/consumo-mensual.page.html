@@ -6,7 +6,7 @@
     <ion-title>
       Consumo Mensual
     </ion-title>
-    <ion-buttons slot="end">
+        <ion-buttons slot="end">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
@@ -14,25 +14,28 @@
 
 <ion-content [fullscreen]="true">
 
-  <div id="container2">
+  <div id="container">
     <div>
-      <p>Consumo Mensual</p>
+      <!-- consumo-diario.page.html -->
+<p>Consumo total Mensual: 0 kWh </p>
     </div>
   </div>
-
-<div id="chart">
-  <apx-chart
-    [series]="chartOptions.series"
-    [chart]="chartOptions.chart"
-    [xaxis]="chartOptions.xaxis"
-    [stroke]="chartOptions.stroke"
-    [dataLabels]="chartOptions.dataLabels"
-    [yaxis]="chartOptions.yaxis"
-    [labels]="chartOptions.labels"
-    [legend]="chartOptions.legend"
-    [title]="chartOptions.title"
-    
-  ></apx-chart>
-</div>
-
+  <div class="centrado">
+    <ion-button  >Restablecer consumo</ion-button>
+  </div>
+  <div id="chart">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [stroke]="chartOptions.stroke"
+      [dataLabels]="chartOptions.dataLabels"
+      [yaxis]="chartOptions.yaxis"
+      [labels]="chartOptions.labels"
+      [legend]="chartOptions.legend"
+      [title]="chartOptions.title"
+      
+    ></apx-chart>
+  </div>
+</ion-content>
 

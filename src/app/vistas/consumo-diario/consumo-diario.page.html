@@ -17,14 +17,25 @@
   <div id="container">
     <div>
       <!-- consumo-diario.page.html -->
-
-<h1>Consumo Diario</h1>
-
-<p>Consumo total diario: {{ totalConsumption }} kWh </p>
+<p>Consumo total Diario: {{ totalConsumption }} kWh </p>
     </div>
   </div>
   <div class="centrado">
     <ion-button (click)="resetTotalConsumption()" >Restablecer consumo</ion-button>
+  </div>
+  <div id="chart">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [stroke]="chartOptions.stroke"
+      [dataLabels]="chartOptions.dataLabels"
+      [yaxis]="chartOptions.yaxis"
+      [labels]="chartOptions.labels"
+      [legend]="chartOptions.legend"
+      [title]="chartOptions.title"
+      
+    ></apx-chart>
   </div>
 </ion-content>
 

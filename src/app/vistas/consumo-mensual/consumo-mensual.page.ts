@@ -47,7 +47,7 @@ export class ConsumoMensualPage implements OnInit {
       },
 
       title: {
-        text: "Grafico de Consumo mensual",
+        text: "Grafico de Consumo Mensual",
 
         align: "center"
       },
