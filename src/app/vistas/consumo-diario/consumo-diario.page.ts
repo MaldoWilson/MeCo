@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Composite } from 'src/app/vistas/composite.component';
 import { Leaf } from 'src/app/vistas/leaf.component';
-import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import 'chart.js';
-import { Chart } from 'chart.js';
+
 
 @Component({
   selector: 'app-consumo-diario',
