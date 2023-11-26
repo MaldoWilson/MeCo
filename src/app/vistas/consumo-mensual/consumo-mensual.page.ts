@@ -28,8 +28,8 @@ export class ConsumoMensualPage implements OnInit {
     this.chartOptions = {
       series: [
         {
-          name: "STOCK ABC",
-          data: series.monthDataSeries1.prices
+          name: "Consumo",
+          data: series.monthDataSeries1.kWh
         }
       ],
       chart: {
@@ -47,8 +47,9 @@ export class ConsumoMensualPage implements OnInit {
       },
 
       title: {
-        text: "Fundamental Analysis of Stocks",
-        align: "left"
+        text: "Grafico de Consumo mensual",
+
+        align: "center"
       },
       subtitle: {
         text: "Price Movements",
@@ -67,4 +68,5 @@ export class ConsumoMensualPage implements OnInit {
     };
   }
 
+  
 }
