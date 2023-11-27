@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Composite } from 'src/app/vistas/composite.component';
+import { Leaf } from 'src/app/vistas/leaf.component';
 import { ApexAxisChartSeries, ApexChart, ApexXAxis, ApexStroke, ApexDataLabels, ApexYAxis, ApexTitleSubtitle, ApexLegend } from 'ng-apexcharts';
 import { series } from './data';
 
@@ -22,10 +24,24 @@ export type ChartOptions = {
 })
 export class ConsumoSemanalPage implements OnInit {
   public chartOptions: ChartOptions;
-
+  totalConsumption: number;
   constructor() { }
 
 ngOnInit() {
+
+    // Crear una instancia de Composite
+    const mainComposite = new Composite();
+
+    // Crear una instancia de Leaf y agregarla al Composite
+    const tv = new Leaf(50);
+    mainComposite.add(tv);
+
+    // Crear otras instancias de Leaf y agregarlas al Composite si es necesario
+    const laptop = new Leaf(20);
+    mainComposite.add(laptop);
+
+    // Calcular el consumo total semanal utilizando el Composite
+    this.totalConsumption = mainComposite.calculateWeeklyConsumption();
 
     this.chartOptions = {
       series: [
