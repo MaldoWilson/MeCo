@@ -103,6 +103,12 @@ const routes: Routes = [
     loadChildren: () => import('./vistas/estadistica-consumo/estadistica-consumo.module').then( m => m.EstadisticaConsumoPageModule),
     ...canActivate(redirectUnauthorizedToLogin)
   },
+  {
+    path: 'bluetooth',
+    loadChildren: () => import('./bluetooth/bluetooth.module').then( m => m.BluetoothPageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+
 
 ];
 

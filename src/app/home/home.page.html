@@ -12,21 +12,37 @@
 
 <ion-content [fullscreen]="true">
 
-  <div id="container">
+  <div class="centrado">
+    <ion-button (click)="activarBluetooth()" >Activar Bluetooth</ion-button>
+  </div>
+
+  <!--
+  <div class="centrado">
     <div *ngFor="let data of Devices">
       <p>{{data.name}}</p>
       <p>{{data.id}}</p>
-
-      <button (click)="connect(data.address)" ></button>
+      <p>{{data.address}}</p>
+      <ion-button (click)="connect(data.address)" ></ion-button>
     </div>
   </div>
-
-    <div class="centrado">
-      <ion-button (click)="activarBluetooth()" >Activar Bluetooth</ion-button>
-    </div>
+  -->
+  
+  <div class="centrado">
+    <ion-list>
+      <ion-item *ngFor="let data of Devices" (click)="connect(data.address)">
+        <ion-label>
+          <h3>{{data.name}}</h3>
+          <p>ID: {{data.id}}</p>
+          <p>Dirección: {{data.address}}</p>
+        </ion-label>
+        <ion-button (click)="connect(data.address)" expand="block" fill="clear" shape="round">
+          Conectar
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
 
  
-
   <ion-grid>
     <!-- Primera fila -->
     <ion-row>
