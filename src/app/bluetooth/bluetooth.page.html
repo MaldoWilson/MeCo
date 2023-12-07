@@ -3,20 +3,15 @@
     <ion-title>
       Bluetooth Data
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-  <ion-card>
-    <ion-card-header>
-      Received Data
-    </ion-card-header>
-    <ion-card-content>
-      <ion-list>
-        <ion-item *ngFor="let data of receivedData">
-          
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item *ngFor="let data of receivedData">
+      {{ data }}
+    </ion-item>
+  </ion-list>
 </ion-content>
