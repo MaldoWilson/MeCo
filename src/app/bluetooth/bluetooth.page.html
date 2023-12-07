@@ -1,35 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Bluetooth</ion-title>
+    <ion-title>
+      Bluetooth Data
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-  <ion-button (click)="checkBluetoothEnable()">Activar Bluetooth</ion-button>
-
-  <ion-list *ngIf="listToggle">
-    <ion-item *ngFor="let device of pairedList" (click)="pairedDeviceId = device.id">
-      <ion-label>
-        <p>{{ device.name }}</p>
-        <p>{{ device.address }}</p>
-      </ion-label>
-      <ion-icon slot="end" name="checkmark-outline" *ngIf="device.id === pairedDeviceId"></ion-icon>
-    </ion-item>
-  </ion-list>
-
-  <ion-button (click)="selectDevice()">Conectar</ion-button>
-
-  <ion-input type="text" placeholder="Ingresa datos a enviar" [(ngModel)]="dataSend" autofocus></ion-input>
-
-  <ion-button (click)="sendData(dataSend)">Enviar</ion-button>
-
-
-
+  <ion-card>
+    <ion-card-header>
+      Received Data
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let data of receivedData">
+          
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar>
-    <ion-button (click)="deviceDisconnect()">Desconectar</ion-button>
-  </ion-toolbar>
-</ion-footer>

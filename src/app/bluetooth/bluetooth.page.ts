@@ -8,20 +8,20 @@ import { BluetoothSerial } from '@awesome-cordova-plugins/bluetooth-serial/ngx';
 })
 export class BluetoothPage implements OnInit {
 
-    constructor(private bluetoothSerial: BluetoothSerial) { }
+    receivedData: string[] = [];
 
+    constructor(private bluetoothSerial: BluetoothSerial) {}
+  
     ngOnInit() {
       this.bluetoothSerial.subscribe('\n').subscribe(
         (data) => {
-          // Aquí recibes los datos Bluetooth y puedes manejarlos según tus necesidades
-          console.log('Datos recibidos por Bluetooth:', data);
+          this.receivedData.push(data);
         },
         (error) => {
           console.error('Error al recibir datos por Bluetooth:', error);
         }
       );
     }
-  
   }
 
 
