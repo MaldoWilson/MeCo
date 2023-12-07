@@ -26,6 +26,7 @@
     "@capacitor/android": "^5.5.1",
     "@capacitor/cli": "^5.5.1",
     "@capacitor/core": "^5.5.1",
+    "@ionic-native/bluetooth-serial": "^5.36.0",
     "@ionic/angular": "^7.0.0",
     "@types/chart.js": "^2.9.31",
     "apexcharts": "^3.44.0",
