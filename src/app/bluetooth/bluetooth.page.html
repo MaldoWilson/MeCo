@@ -1,17 +1,24 @@
+<!-- app.component.html -->
+
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Bluetooth Data
+      Conexión Bluetooth
     </ion-title>
-    <ion-buttons slot="end">
-      <ion-back-button defaultHref="/home"></ion-back-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
-  <ion-list>
-    <ion-item *ngFor="let data of receivedData">
-      {{ data }}
+
+<ion-content>
+  <ion-button expand="full" (click)="searchAndAddDevices()">Buscar Dispositivos Bluetooth</ion-button>
+
+  <!-- Lista de dispositivos encontrados -->
+  <ion-list *ngIf="devices.length > 0">
+    <ion-item *ngFor="let device of devices">
+      {{ device.name }} ({{ device.address }})
+      <ion-button slot="end" (click)="connectToDevice(device.address)">Conectar</ion-button>
     </ion-item>
   </ion-list>
+  
+  <!-- Mensaje si no se encuentran dispositivos -->
+  <ion-label *ngIf="devices.length === 0">No se encontraron dispositivos Bluetooth.</ion-label>
 </ion-content>
