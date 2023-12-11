@@ -1,98 +1,102 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { LoadingController, NavController } from '@ionic/angular';
-import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
 import { BluetoothSerial } from '@awesome-cordova-plugins/bluetooth-serial/ngx';
 import { AlertController } from '@ionic/angular';
+import { InteractionService } from 'src/app/services/interaction.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
-  Devices
+  Devices;
+  receivedData: string = "";
+  recibeData: string = "";
+
   constructor(
-  private formBuilder:FormBuilder, 
-  private loadingCtrl: LoadingController,
-  private authService:AuthService,
-  private bluetoothSerial:BluetoothSerial,
-  private alertController:AlertController,
-  private navCtrl: NavController,
-  private router : Router) {}
+    private bluetoothSerial: BluetoothSerial,
+    private alertController: AlertController,
+    private interactionService: InteractionService,
+  ) {}
 
-
-
-
-  activarBluetooth(){
-    this.bluetoothSerial.isEnabled().then(responde=>{
-      //this.isEnable("isOn");
-      this.listDevices()
-    },error=>{
-      this.isEnable("isOff")
-    }
-    )
-
+  ngOnInit() {
+    // Inicia la activación del Bluetooth cuando la página está lista
+    this.activarBluetooth();
+    this.subscribeToData();
+    this.sendData();
   }
 
-  listDevices(){
-    this.bluetoothSerial.list().then(response=>{
-      this.Devices=response
-    },error=>{
-      console.log("error")
-    }
-    )
+  activarBluetooth() {
+    this.bluetoothSerial.isEnabled().then(responde => {
+      this.listDevices();
+    }, error => {
+      this.isEnable("isOff");
+    });
   }
 
-  connect(address){
-  this.bluetoothSerial.connect(address).subscribe(success=>{
-    this.deviceConnected()
-}
-),error=>{
-  console.log("error")
-}
+  listDevices() {
+    this.bluetoothSerial.list().then(response => {
+      this.Devices = response;
+    }, error => {
+      console.log("error");
+    });
   }
 
-  deviceConnected(){
-    this.bluetoothSerial.subscribe('/n').subscribe(success=>{
-      this.hundler(success)     
-    }
-    )
+  connect(address) {
+    this.bluetoothSerial.connect(address).subscribe(success => {
+      this.deviceConnected();
+    }, error => {
+      console.log("error");
+    });
   }
 
-  hundler(value){
-    console.log(value)
+
+  deviceConnected() {
+    this.subscribeToData();
+    this.interactionService.showSuccessToast("Conectado correctamente");
+  }
+  
+  subscribeToData() {
+    this.bluetoothSerial.subscribe('\n').subscribe(
+      (success) => {
+        this.handler(success);
+      },
+      (error) => {
+        this.interactionService.showErrorToast("Error");
+      }
+    );
+  }
+  
+
+  handler(value) {
+    console.log("Datos recibidos:", value);
+    this.receivedData = value;
   }
 
-  sebData(){
-    this.bluetoothSerial.write("7").then(responce=>{
-      console.log("ok")
-    },error=>{
-      console.log("un problema")
-    }
-    )
+  sendData() {
+    this.bluetoothSerial.write("Datos enviados Correctamente").then(response => {
+      console.log("ok");
+    }, error => {
+      console.log("un problema");
+    });
   }
 
-  Disconnected(){
-    this.bluetoothSerial.disconnect()
-    console.log("Dispositivo Desconectado")
+  disconnect() {
+    this.bluetoothSerial.disconnect();
+    console.log("Dispositivo Desconectado");
   }
 
-  async isEnable(msg){
-    const alert=await this.alertController.create({
-      header:"Alerta",
-      message:msg,
-      buttons:[{
-        text:"Okay",
-        handler:()=>{
-          console.log("Okay")
+  async isEnable(msg) {
+    const alert = await this.alertController.create({
+      header: "Alerta",
+      message: msg,
+      buttons: [{
+        text: "Okay",
+        handler: () => {
+          console.log("Okay");
         }
       }]
-    }
-    )
+    });
   }
-
-
 }

@@ -13,19 +13,10 @@
 <ion-content [fullscreen]="true">
 
   <div class="centrado">
-    <ion-button (click)="activarBluetooth()" >Activar Bluetooth</ion-button>
+    <ion-button (click)="sendData()" >mandar dato</ion-button>
   </div>
 
-  <!--
-  <div class="centrado">
-    <div *ngFor="let data of Devices">
-      <p>{{data.name}}</p>
-      <p>{{data.id}}</p>
-      <p>{{data.address}}</p>
-      <ion-button (click)="connect(data.address)" ></ion-button>
-    </div>
-  </div>
-  -->
+
   
   <div class="centrado">
     <ion-list>
@@ -35,14 +26,23 @@
           <p>ID: {{data.id}}</p>
           <p>Dirección: {{data.address}}</p>
         </ion-label>
-        <ion-button (click)="connect(data.address)" expand="block" fill="clear" shape="round">
-          Conectar
-        </ion-button>
+        <ion-button (click)="connect(data.address)" expand="block" fill="clear" shape="round"></ion-button>
       </ion-item>
     </ion-list>
   </div>
 
- 
+  <div class="centrado">
+  <ion-item  >
+    <ion-label style="color: white;" >Datos Recibidos:</ion-label>
+    <ion-input [(ngModel)]="receivedData" style="color: white;"  disabled></ion-input>
+  </ion-item>
+  </div>
+
+
+  <div class="centrado">
+    <ion-button (click)="disconnect()" color="danger"  >Desconectar </ion-button>
+  </div>
+
   <ion-grid>
     <!-- Primera fila -->
     <ion-row>
