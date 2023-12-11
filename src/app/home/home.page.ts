@@ -75,7 +75,7 @@ export class HomePage implements OnInit {
   }
 
   sendData() {
-    this.bluetoothSerial.write("Datos enviados Correctamente").then(response => {
+    this.bluetoothSerial.write("Datos enviados Correctamente Desde App").then(response => {
       console.log("ok");
     }, error => {
       console.log("un problema");
