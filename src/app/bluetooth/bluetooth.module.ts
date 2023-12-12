@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { BluetoothPageRoutingModule } from './bluetooth-routing.module';
 
 import { BluetoothPage } from './bluetooth.page';
+import { BluetoothSerial } from '@awesome-cordova-plugins/bluetooth-serial/ngx';
 
 @NgModule({
   imports: [
@@ -15,6 +16,9 @@ import { BluetoothPage } from './bluetooth.page';
     IonicModule,
     BluetoothPageRoutingModule
   ],
-  declarations: [BluetoothPage]
+  declarations: [BluetoothPage],
+  providers:[
+    BluetoothSerial
+  ]
 })
 export class BluetoothPageModule {}

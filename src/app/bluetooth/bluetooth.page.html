@@ -1,22 +1,35 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>
-      Bluetooth Data
+      Conexión a Bluetoth
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-card-header>
-      Received Data
-    </ion-card-header>
-    <ion-card-content>
-      <ion-list>
-        <ion-item *ngFor="let data of receivedData">
-          
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
+  
+  <div class="centrado">
+    <ion-list>
+      <ion-item *ngFor="let data of Devices" (click)="connect(data.address)">
+        <ion-label>
+          <h3>{{data.name}}</h3>
+          <p>ID: {{data.id}}</p>
+          <p>Dirección: {{data.address}}</p>
+        </ion-label>
+        <ion-button (click)="connect(data.address)" expand="block" fill="clear" shape="round"></ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div class="centrado">
+    <ion-button (click)="disconnect()" color="danger"  >Desconectar </ion-button>
+  </div> 
+  
 </ion-content>

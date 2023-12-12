@@ -15,8 +15,6 @@
   <div class="centrado">
     <ion-button (click)="sendData()" >Enviar Datos</ion-button>
   </div>
-
-
   
   <div class="centrado">
     <ion-list>
@@ -32,19 +30,18 @@
   </div>
 
   <div class="centrado">
-    <ion-button (click)="sendData()" >Recibir Datos</ion-button>
+    <ion-button (click)="sendData()" >Recibir Voltaje</ion-button>
   </div>
   <div class="centrado">
   <ion-item  >
-    <ion-label style="color: white;" >Datos Recibidos:</ion-label>
+    <ion-label style="color: white;" >Voltaje Recibido:</ion-label>
     <ion-input [(ngModel)]="receivedData" style="color: white;"  disabled></ion-input>
   </ion-item>
   </div>
-
-
   <div class="centrado">
     <ion-button (click)="disconnect()" color="danger"  >Desconectar </ion-button>
-  </div>
+  </div> 
+  
 
   <ion-grid>
     <!-- Primera fila -->
