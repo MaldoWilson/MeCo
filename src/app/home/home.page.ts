@@ -12,7 +12,6 @@ export class HomePage implements OnInit {
 
   Devices;
   receivedData: string = "";
-  recibeData: string = "";
 
   constructor(
     private bluetoothSerial: BluetoothSerial,
@@ -24,7 +23,6 @@ export class HomePage implements OnInit {
     // Inicia la activación del Bluetooth cuando la página está lista
     this.activarBluetooth();
     this.subscribeToData();
-    this.sendData();
   }
 
   activarBluetooth() {
@@ -76,6 +74,14 @@ export class HomePage implements OnInit {
 
   sendData() {
     this.bluetoothSerial.write("Datos enviados Correctamente Desde App").then(response => {
+      console.log("ok");
+    }, error => {
+      console.log("un problema");
+    });
+  }
+
+  recibeData() {
+    this.bluetoothSerial.write("").then(response => {
       console.log("ok");
     }, error => {
       console.log("un problema");

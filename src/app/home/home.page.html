@@ -17,20 +17,7 @@
   </div>
   
   <div class="centrado">
-    <ion-list>
-      <ion-item *ngFor="let data of Devices" (click)="connect(data.address)">
-        <ion-label>
-          <h3>{{data.name}}</h3>
-          <p>ID: {{data.id}}</p>
-          <p>Dirección: {{data.address}}</p>
-        </ion-label>
-        <ion-button (click)="connect(data.address)" expand="block" fill="clear" shape="round"></ion-button>
-      </ion-item>
-    </ion-list>
-  </div>
-
-  <div class="centrado">
-    <ion-button (click)="sendData()" >Recibir Voltaje</ion-button>
+    <ion-button (click)="recibeData()" >Recibir Voltaje</ion-button>
   </div>
   <div class="centrado">
   <ion-item  >
