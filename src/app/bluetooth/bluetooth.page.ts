@@ -65,7 +65,7 @@ export class BluetoothPage implements OnInit {
         this.handler(success);
       },
       (error) => {
-        this.interactionService.showErrorToast("Error");
+        console.log("error");
       }
     );
   }

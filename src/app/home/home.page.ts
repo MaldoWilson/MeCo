@@ -63,7 +63,7 @@ export class HomePage implements OnInit {
         this.handler(success);
       },
       (error) => {
-        this.interactionService.showErrorToast("Error");
+        console.log("error");
       }
     );
   }
